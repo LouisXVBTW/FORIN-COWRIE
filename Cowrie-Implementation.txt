@@ -1,0 +1,27 @@
+NA: x.x.x.x 0987654321234567890 rockyou.txt
+
+LDN: x.x.x.x iloveyou https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10k-most-common.txt
+
+SING: x.x.x.x qwerqwer https://raw.githubusercontent.com/iryndin/10K-Most-Popular-Passwords/master/passwords.txt
+
+-----------------------
+sudo apt-get update
+sudo adduser honpot
+sudo apt-get install git python3-pip python3-virtualenv libssl-dev -y
+sudo apt-get install libffi-dev build-essential libpython3-dev python3-minimal authbind virtualenv nano -y
+su - honpot
+git clone https://github.com/cowrie/cowrie
+cd cowrie
+virtualenv --python=python3 cowrie-env
+source cowrie-env/bin/activate
+pip install --upgrade pip
+pip install --upgrade -r requirements.txt
+cd etc; cp cowrie.cfg.dist cowrie.cfg; cp userdb.example userdb.txt; cd ..
+bin/cowrie start
+exit
+sudo lsof –i –P –n
+sudo iptables -t nat -I PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 2222
+su - honpot
+
+
+
